@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  db-sql:
+    image: postgres:17
+    container_name: alerts_pg
+    restart: always
+    environment:
+      POSTGRES_DB: sistema_db
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - alerts_network
+
+  db-nosql:
+    image: mongo:8
+    container_name: alerts_mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo_admin
+      MONGO_INITDB_ROOT_PASSWORD: mongo_password
+    ports:
+      - "27017:27017"
+    networks:
+      - alerts_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    container_name: alerts_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules # Evita que los módulos locales sobreescriban los de Docker
+    environment:
+      - PORT=5000
+      - NODE_ENV=development
+      - PG_HOST=db-sql
+      - PG_USER=user_admin
+      - PG_DB=sistema_db
+      - PG_PASSWORD=password123
+      - PG_PORT=5432
+      - MONGO_URI=mongodb://mongo_admin:mongo_password@db-nosql:27017/sistema_logs?authSource=admin
+      - JWT_SECRET=tu_clave_secreta_super_segura
+    depends_on:
+      - db-sql
+      - db-nosql
+    networks:
+      - alerts_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    container_name: alerts_frontend
+    restart: always
+    ports:
+      - "5173:80"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - alerts_network
+
+networks:
+  alerts_network:
+    driver: bridge
