@@ -32,18 +32,18 @@ const RegisterPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+    <div className="auth-card">
       <h2>Registrar Cuenta</h2>
       <form onSubmit={handleSubmit}>
         <Input label="Nombre" name="nombre" value={formData.nombre} onChange={handleChange} required />
         <Input label="Email" name="email" type="email" value={formData.email} onChange={handleChange} required />
         <Input label="Contraseña" name="password" type="password" value={formData.password} onChange={handleChange} required />
         <Input label="Confirmar Contraseña" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} required />
-        <button type="submit" style={{ width: '100%', padding: '10px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', marginTop: '10px' }}>
+        <button type="submit" className="button button-primary">
           Registrar
         </button>
       </form>
-      <p style={{ textAlign: 'center', marginTop: '10px' }}>
+      <p className="auth-footer">
         ¿Ya tienes cuenta? <Link to="/">Inicia Sesión</Link>
       </p>
     </div>

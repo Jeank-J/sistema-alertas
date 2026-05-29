@@ -1,0 +1,322 @@
+.alerta-card {
+  width: 100%;
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f7fbf5
+    );
+
+  border-radius: 28px;
+
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.28s ease;
+
+  border: 1px solid #dcecdc;
+
+  box-shadow:
+    0 10px 30px rgba(34, 84, 61, 0.08),
+    0 4px 14px rgba(34, 84, 61, 0.04);
+}
+
+/* EFECTO SUPERIOR */
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2d6a4f,
+      #40916c,
+      #74c69d
+    );
+}
+
+/* BORDE LATERAL */
+
+.alerta-card::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 8px;
+  height: 100%;
+}
+
+/* CATEGORÍAS */
+
+.alerta-card.emergencia::before {
+  background: #588157;
+}
+
+.alerta-card.advertencia::before {
+  background: #7f9f5b;
+}
+
+.alerta-card.informacion::before {
+  background: #40916c;
+}
+
+.alerta-card.default::before {
+  background: #2d6a4f;
+}
+
+/* HOVER */
+
+.alerta-card:hover {
+  transform:
+    translateY(-7px)
+    scale(1.01);
+
+  box-shadow:
+    0 22px 45px rgba(34, 84, 61, 0.14),
+    0 8px 20px rgba(34, 84, 61, 0.08);
+}
+
+/* HEADER */
+
+.alerta-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+/* BADGE */
+
+.alert-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 0.8rem 1.3rem;
+
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  backdrop-filter: blur(8px);
+}
+
+.alert-badge.emergencia {
+  background: #d8f3dc;
+  color: #2d6a4f;
+}
+
+.alert-badge.advertencia {
+  background: #ecf39e;
+  color: #556b2f;
+}
+
+.alert-badge.informacion {
+  background: #b7e4c7;
+  color: #1b4332;
+}
+
+.alert-badge.default {
+  background: #d8f3dc;
+  color: #2d6a4f;
+}
+
+/* SEVERIDAD */
+
+.severity-pill {
+  background:
+    linear-gradient(
+      135deg,
+      #1b4332,
+      #2d6a4f
+    );
+
+  color: white;
+
+  padding: 0.7rem 1rem;
+
+  border-radius: 999px;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 16px rgba(45, 106, 79, 0.2);
+}
+
+/* BODY */
+
+.alerta-body h2 {
+  margin: 0;
+
+  font-size: 2rem;
+  line-height: 1.2;
+
+  color: #1b4332;
+
+  font-weight: 800;
+}
+
+.alerta-body p {
+  margin-top: 1rem;
+
+  font-size: 1.08rem;
+  line-height: 1.9;
+
+  color: #4f6356;
+
+  max-width: 95%;
+}
+
+/* FOOTER */
+
+.alerta-footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+/* INFO */
+
+.alerta-info {
+  display: flex;
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  background: #f6fff4;
+
+  border: 1px solid #dcecdc;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 10px rgba(34, 84, 61, 0.05);
+}
+
+.info-icon {
+  font-size: 1.1rem;
+}
+
+.info-box small {
+  font-size: 0.92rem;
+  font-weight: 700;
+
+  color: #344e41;
+}
+
+/* BOTÓN */
+
+.alerta-button button,
+.alerta-button a {
+  background:
+    linear-gradient(
+      135deg,
+      #2d6a4f,
+      #1b4332
+    );
+
+  color: white;
+
+  border: none;
+
+  border-radius: 16px;
+
+  padding: 1rem 1.4rem;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  box-shadow:
+    0 10px 20px rgba(45, 106, 79, 0.25);
+}
+
+.alerta-button button:hover,
+.alerta-button a:hover {
+  transform:
+    translateY(-2px)
+    scale(1.03);
+
+  box-shadow:
+    0 14px 28px rgba(45, 106, 79, 0.35);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .alerta-card {
+    padding: 1.4rem;
+    border-radius: 22px;
+  }
+
+  .alerta-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .alerta-body p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .alerta-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .alerta-button {
+    width: 100%;
+  }
+
+  .alerta-button button,
+  .alerta-button a {
+    width: 100%;
+  }
+
+  .alerta-info {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .info-box {
+    width: 100%;
+  }
+}

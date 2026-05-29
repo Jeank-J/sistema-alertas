@@ -104,17 +104,22 @@ const Navbar = () => {
 
       <style jsx>{`
         .navbar {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          background: linear-gradient(135deg, #2f7d3a 0%, #6fa169 100%);
+          box-shadow: 0 16px 40px rgba(31, 63, 31, 0.16);
+          position: sticky;
+          top: 0;
+          z-index: 30;
         }
 
         .navbar-container {
           max-width: 1400px;
           margin: 0 auto;
-          padding: 1rem 2rem;
+          padding: 1rem 1.5rem;
           display: flex;
           align-items: center;
-          gap: 2rem;
+          gap: 1rem;
+          justify-content: space-between;
+          flex-wrap: wrap;
         }
 
         .nav-brand {
@@ -128,45 +133,48 @@ const Navbar = () => {
 
         .nav-brand h2 {
           margin: 0;
-          font-size: 1.5rem;
-          font-weight: 700;
+          font-size: 1.45rem;
+          font-weight: 800;
         }
 
         .nav-menu {
           display: flex;
-          gap: 1rem;
+          gap: 0.8rem;
           flex: 1;
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         .nav-link {
-          padding: 0.75rem 1.25rem;
+          padding: 0.75rem 1.15rem;
           color: rgba(255, 255, 255, 0.9);
           text-decoration: none;
-          border-radius: 8px;
+          border-radius: 999px;
           transition: all 0.2s;
-          font-weight: 500;
+          font-weight: 600;
+          border: 1px solid transparent;
         }
 
         .nav-link:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.18);
           color: white;
         }
 
         .nav-link.active {
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.28);
           color: white;
         }
 
         .user-section {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.85rem;
         }
 
         .user-info {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.65rem;
           color: white;
           font-weight: 500;
         }
@@ -175,42 +183,64 @@ const Navbar = () => {
           background: rgba(255, 255, 255, 0.2);
           border: none;
           color: white;
-          padding: 0.5rem;
-          border-radius: 6px;
+          padding: 0.55rem;
+          border-radius: 12px;
           cursor: pointer;
           transition: all 0.2s;
         }
 
         .btn-logout:hover {
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.32);
         }
 
         .auth-links {
           display: flex;
           gap: 0.75rem;
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         .btn-link {
-          padding: 0.75rem 1.25rem;
+          padding: 0.75rem 1.15rem;
           color: white;
           text-decoration: none;
-          border-radius: 8px;
+          border-radius: 999px;
           transition: all 0.2s;
-          font-weight: 500;
-          border: 2px solid rgba(255, 255, 255, 0.3);
+          font-weight: 600;
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          background: rgba(255, 255, 255, 0.12);
         }
 
         .btn-link:hover {
-          border-color: white;
-          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.45);
+          background: rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary {
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.22);
         }
 
         .btn-secondary:hover {
           background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 840px) {
+          .navbar-container {
+            justify-content: center;
+            align-items: stretch;
+          }
+
+          .nav-menu {
+            justify-content: center;
+            gap: 0.5rem;
+          }
+
+          .user-section {
+            justify-content: center;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 1rem;
+          }
         }
       `}</style>
     </nav>

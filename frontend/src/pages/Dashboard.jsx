@@ -33,28 +33,33 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <main className="main-content" style={{ padding: '20px' }}>
-      <div className="content-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1>Todas las Alertas</h1>
-        {isLoggedIn ? (
-          <Link to="/crear-alerta" className="btn btn-primary" style={{ background: '#2563eb', color: 'white', padding: '10px 15px', textDecoration: 'none', borderRadius: '5px', whiteSpace: 'nowrap' }}>
-            + Crear Alerta
-          </Link>
-        ) : (
-          <Link to="/login" className="btn btn-secondary" style={{ background: '#6b7280', color: 'white', padding: '10px 15px', textDecoration: 'none', borderRadius: '5px', whiteSpace: 'nowrap' }}>
-            Inicia Sesión para Crear
-          </Link>
-        )}
+    <main className="main-content">
+      <div className="page-header">
+        <div>
+          <h1>Todas las Alertas</h1>
+          <p>Explora los reportes recientes de la comunidad y mantente listo para actuar.</p>
+        </div>
+        <div>
+          {isLoggedIn ? (
+            <Link to="/crear-alerta" className="button button-primary">
+              + Crear Alerta
+            </Link>
+          ) : (
+            <Link to="/login" className="button button-secondary">
+              Inicia Sesión para Crear
+            </Link>
+          )}
+        </div>
       </div>
 
-      {error && <div className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
 
       {loading ? (
-        <div style={{ textAlign: 'center', padding: '40px' }}>
+        <div className="empty-state">
           <p>Cargando alertas...</p>
         </div>
       ) : alertas.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '40px' }}>
+        <div className="empty-state">
           <p>No hay alertas disponibles en este momento.</p>
         </div>
       ) : (

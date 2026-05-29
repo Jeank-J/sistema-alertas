@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import CrearAlerta from './pages/CrearAlerta';
 import MisAlertas from './pages/MisAlertas';
+import Footer from './components/footer';
 import './App.css'; // Importamos tus estilos originales
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/mis-alertas" element={<MisAlertas />} />        
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

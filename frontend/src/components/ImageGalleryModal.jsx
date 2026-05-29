@@ -33,7 +33,6 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
     return null;
   }
 
-  // Vista expandida de imagen individual con zoom
   if (selectedImageIndex !== null) {
     const currentImageId = imageIds[selectedImageIndex];
     return (
@@ -48,7 +47,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(15, 23, 42, 0.92)',
+          background: 'rgba(15, 30, 17, 0.94)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -66,7 +65,6 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
             maxHeight: '95vh',
           }}
         >
-          {/* Controles de zoom */}
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -74,16 +72,16 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
             marginBottom: '12px',
             gap: '12px',
           }}>
-            <div style={{ color: '#fff', fontSize: '14px', fontWeight: 600 }}>
+            <div style={{ color: '#eef7ed', fontSize: '14px', fontWeight: 600 }}>
               Imagen {selectedImageIndex + 1} de {imageIds.length} • Zoom: {zoom}%
             </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               <button
                 type="button"
                 onClick={() => setZoom(Math.max(50, zoom - 20))}
                 style={{
                   padding: '8px 12px',
-                  background: '#1e293b',
+                  background: '#264f2f',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
@@ -99,7 +97,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
                 onClick={() => setZoom(100)}
                 style={{
                   padding: '8px 12px',
-                  background: '#1e293b',
+                  background: '#264f2f',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
@@ -115,7 +113,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
                 onClick={() => setZoom(Math.min(300, zoom + 20))}
                 style={{
                   padding: '8px 12px',
-                  background: '#1e293b',
+                  background: '#264f2f',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
@@ -134,7 +132,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
                 }}
                 style={{
                   padding: '8px 12px',
-                  background: '#ef4444',
+                  background: '#b23e32',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
@@ -149,7 +147,6 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
             </div>
           </div>
 
-          {/* Contenedor de imagen con scroll */}
           <div
             style={{
               flex: 1,
@@ -157,8 +154,8 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: '#0f172a',
-              borderRadius: '12px',
+              background: '#102213',
+              borderRadius: '16px',
             }}
           >
             <img
@@ -173,13 +170,13 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
             />
           </div>
 
-          {/* Navegación entre imágenes */}
           {imageIds.length > 1 && (
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
               marginTop: '12px',
               gap: '8px',
+              flexWrap: 'wrap',
             }}>
               <button
                 type="button"
@@ -189,7 +186,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
                 }}
                 style={{
                   padding: '10px 16px',
-                  background: '#1e293b',
+                  background: '#264f2f',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
@@ -209,7 +206,7 @@ const ImageGalleryModal = ({ imageIds = [], label = 'Ver imágenes' }) => {
                 }}
                 style={{
                   padding: '10px 16px',
-                  background: '#1e293b',
+                  background: '#264f2f',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '6px',
